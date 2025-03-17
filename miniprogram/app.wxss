@@ -1,0 +1,31 @@
+/* @import "./page/common/lib/weui.wxss"; */
+
+page {
+  /* reset */
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.6;
+
+  /* vant reset */
+  --sidebar-selected-border-color: #3cc51f;
+
+  /* my-theme */
+  --green: #91F51D;
+  --pink: #FF00FF;
+  --orange: #FFB400;
+  --bgc: #150E07;
+  --black: #333;
+  --light-grey: #ebedf0;
+  --grey: #969799;
+}
+
+/* lib */
+.bold{
+  font-weight: bold;
+}
+.tc{
+  text-align: center;
+}
+.mr10{
+  margin-left: 10px;
+}
