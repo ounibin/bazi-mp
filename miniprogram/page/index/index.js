@@ -26,7 +26,7 @@ Page({
     showCalendar: false,
     calendarMinDate: dayjs('1900-01-01 00:00').valueOf(),
     calendarMaxDate: dayjs().valueOf(),
-    birthStr: ''
+    birthStr: '点击选择生日时辰'
   },
 
   /**
@@ -55,6 +55,9 @@ Page({
 
   onCloseCalendarType(e) {
     // console.log(`异步打印----e.detail: `, e.detail)
+    this.setData({
+      showCalendarType: false
+    })
 
   },
 
@@ -153,7 +156,7 @@ Page({
     }
 
     const res = analyzeWuXing(birth)
-    // console.log(`异步打印----res: `, res)
+    console.log(`异步打印----res: `, res)
     const baziStr = res.pillars.join(' ')
     const missingWuXing = res.missingWuXing.length === 0 ? '无' : res.missingWuXing.join('、')
     console.log(`异步打印----baziStr123: `, baziStr)

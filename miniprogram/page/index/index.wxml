@@ -22,8 +22,8 @@
 
 
 
-<van-action-sheet show="{{ showCalendarType }}" actions="{{ calendarTypeActions }}" bind:close="onCloseCalendarType"
-  bind:select="onSelectCalendarType" />
+<van-action-sheet overlay show="{{ showCalendarType }}" actions="{{ calendarTypeActions }}"
+  bind:close="onCloseCalendarType" bind:select="onSelectCalendarType" />
 
 
 <!-- <van-calendar show="{{ showCalendar }}" color="#07c160" min-date="{{calendarMinDate}}" max-date="{{ calendarMaxDate }}"
