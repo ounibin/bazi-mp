@@ -1,7 +1,7 @@
 {
   "pages": [
-    "page/index/index",
-    "page/my/index"
+    "pages/index/index",
+    "pages/my/index"
   ],
   "window": {
     "navigationBarTextStyle": "@navigationBarTextStyle",
@@ -16,13 +16,13 @@
     "backgroundColor": "",
     "list": [
       {
-        "pagePath": "page/index/index",
+        "pagePath": "pages/index/index",
         "iconPath": "img/icon-bazi.png",
         "selectedIconPath": "img/icon-bazi-active.png",
         "text": "首页"
       },
       {
-        "pagePath": "page/my/index",
+        "pagePath": "pages/my/index",
         "iconPath": "img/icon-my.png",
         "selectedIconPath": "img/icon-my-active.png",
         "text": "我的"
@@ -47,9 +47,7 @@
   "themeLocation": "app.theme.json",
   "darkmode": false,
   "resizable": true,
-  "useExtendedLib": {
-    "weui": false
-  },
+  "useExtendedLib": {},
   "usingComponents": {
     "van-image": "@vant/weapp/image/index",
     "van-switch": "@vant/weapp/switch/index",

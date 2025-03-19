@@ -18,8 +18,11 @@
   <van-cell title="八字" value="{{baziStr}}" />
   <van-cell title="五行缺" value="{{missingWuXing}}" />
   <!-- <van-cell title="八字" value="{{baziTxt}}" /> -->
-</van-cell-group>
 
+  <view class="container">
+    <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+  </view>
+</van-cell-group>
 
 
 <van-action-sheet overlay show="{{ showCalendarType }}" actions="{{ calendarTypeActions }}"

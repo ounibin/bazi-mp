@@ -4,7 +4,38 @@ import {
   analyzeWuXing
 } from '../../lib/suanming/index'
 import Toast from '@vant/weapp/toast/toast'
-// page/index/index.js
+import * as echarts from '../../ec-canvas/echarts';
+
+
+let chart = null;
+
+function initChart(canvas, width, height, dpr) {
+  chart = echarts.init(canvas, null, {
+    width: width,
+    height: height,
+    devicePixelRatio: dpr // new
+  });
+  canvas.setChart(chart);
+
+  const option = {
+    xAxis: {
+      type: 'category',
+      data: ['金', '木', '水', '火', '土']
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [{
+      data: [0, 0, 0, 0, 0],
+      type: 'bar'
+    }]
+  };
+
+
+  chart.setOption(option);
+  return chart;
+}
+
 Page({
 
   /**
@@ -26,7 +57,10 @@ Page({
     showCalendar: false,
     calendarMinDate: dayjs('1900-01-01 00:00').valueOf(),
     calendarMaxDate: dayjs().valueOf(),
-    birthStr: '点击选择生日时辰'
+    birthStr: '点击选择生日时辰',
+    ec: {
+      onInit: initChart
+    }
   },
 
   /**
@@ -159,6 +193,16 @@ Page({
     console.log(`异步打印----res: `, res)
     const baziStr = res.pillars.join(' ')
     const missingWuXing = res.missingWuXing.length === 0 ? '无' : res.missingWuXing.join('、')
+
+
+    const wuxingInfo = res.wuXingDistribution
+    const wuxingData = [wuxingInfo['金'], wuxingInfo['木'], wuxingInfo['水'], wuxingInfo['火'], wuxingInfo['土']]
+    chart.setOption({
+      series: [{
+        data: wuxingData,
+        type: 'bar'
+      }]
+    })
     console.log(`异步打印----baziStr123: `, baziStr)
     console.log(`异步打印----baziStr123: `, missingWuXing)
 
@@ -182,7 +226,11 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    setTimeout(() => {
+      // 获取 chart 实例的方式
+      console.log(chart)
+      // const ecIns = this.data.ec.onInit()
+    }, 2000);
   },
 
   /**
