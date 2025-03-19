@@ -27,5 +27,7 @@ module.exports = {
     requireMiniProgram: true,
   },
   extends: 'eslint:recommended',
-  rules: {},
+  rules: {
+    'no-console': 'warn'
+  },
 }
