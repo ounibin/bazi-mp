@@ -3,6 +3,10 @@
 page {
   /* reset */
   height: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background-color: #F5F3F0;
+  color: #333;
   font-size: 16px;
   line-height: 1.6;
 
@@ -16,16 +20,23 @@ page {
   --bgc: #150E07;
   --black: #333;
   --light-grey: #ebedf0;
-  --grey: #969799;
+  --grey: #666;
+
+  /* vant ui */
+  /* 修改主要按钮的背景色 */
+  --button-primary-background-color: #A57865;
+  --button-primary-border-color: #A57865;
+  /* 修改选项卡激活状态文字颜色 */
+  --tab-active-text-color: #A57865;
+  /* 修改开关开启状态的背景色 */
+  --switch-on-background-color: #A57865;
 }
 
 /* lib */
-.bold{
+.bold {
   font-weight: bold;
 }
-.tc{
+
+.tc {
   text-align: center;
-}
-.mr10{
-  margin-left: 10px;
 }

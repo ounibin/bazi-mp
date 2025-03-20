@@ -23,7 +23,8 @@ function initChart(canvas, width, height, dpr) {
       data: ['金', '木', '水', '火', '土']
     },
     yAxis: {
-      type: 'value'
+      type: 'value',
+      show: false
     },
     series: [{
       data: [0, 0, 0, 0, 0],
@@ -68,6 +69,12 @@ Page({
    */
   onLoad(options) {
     console.log(`异步打印----dayjs('1900-01-01 00:00').valueOf(): `, dayjs('1900-01-01 00:00').valueOf())
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline'],
+      success: () => console.log('分享菜单已调起'),
+      fail: () => console.log('分享菜单已关闭')
+    });
   },
 
   onChangeCalendarType() {
@@ -143,17 +150,14 @@ Page({
     })
   },
 
+  handleShare () {
+    console.log(`异步打印----fenxiang: `, )
+  },
+
   queryBazi() {
 
 
-    this.setData({
-      baziStr: '',
-      missingWuXing: ''
-    })
-
-
-
-    if (!this.data.birthStr) {
+    if (!(/^\d/.test(this.data.birthStr))) {
       wx.showToast({
         title: '请输入生日时辰',
         icon: 'error',
@@ -161,6 +165,12 @@ Page({
       })
       return
     }
+    
+
+    this.setData({
+      baziStr: '',
+      missingWuXing: ''
+    })
 
     let birth = ''
     if (this.data.calendarType === '农历') {
@@ -196,7 +206,24 @@ Page({
 
 
     const wuxingInfo = res.wuXingDistribution
-    const wuxingData = [wuxingInfo['金'], wuxingInfo['木'], wuxingInfo['水'], wuxingInfo['火'], wuxingInfo['土']]
+    const wuxingData = [
+      { value: wuxingInfo['金'], itemStyle: { color: '#F5F0E6' } }, // 红色柱子
+      { value: wuxingInfo['木'], itemStyle: { color: '#2D5A3D' } }, // 绿色柱子
+      { value: wuxingInfo['水'], itemStyle: { color: '#2E3192' } }, // 蓝色柱子
+      { value: wuxingInfo['火'], itemStyle: { color: '#C41E3A' } }, // 蓝色柱子
+      { value: wuxingInfo['土'], itemStyle: { color: '#A57865' } } // 紫色柱子
+    ].map((item) => {
+      return {
+        ...item,
+        label: {
+          show: true,
+          position: 'top',
+          color: '#666',
+          fontSize: 14,
+          formatter: '{c}' // 显示 "数值 + 件"
+        }
+      }
+    })
     chart.setOption({
       series: [{
         data: wuxingData,
@@ -272,6 +299,29 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
-
-  }
+  return {
+    title: '查看你的八字五行',
+    path: '/pages/index/index',
+    success: (res) => {
+      // 分享成功
+      this.setData({
+        shareSuccess: true
+      });
+      // wx.showToast({
+      //   title: '分享成功',
+      //   icon: 'success',
+      //   duration: 2000
+      // });
+      console.log('分享成功一次', res);
+    },
+    fail: (res) => {
+      // 分享失败
+      wx.showToast({
+        title: '分享失败',
+        icon: 'error',
+        duration: 2000
+      });
+    }
+  };
+}
 })

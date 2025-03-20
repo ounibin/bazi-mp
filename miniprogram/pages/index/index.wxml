@@ -11,8 +11,8 @@
 </van-cell-group>
 
 
-<van-button type="primary" bind:tap="queryBazi">查询</van-button>
-
+<van-button type="primary" size="large" bind:tap="queryBazi">查询</van-button>
+<button open-type="share" bind:tap="handleShare">分享</button>
 
 <van-cell-group>
   <van-cell title="八字" value="{{baziStr}}" />
