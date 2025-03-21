@@ -32,6 +32,11 @@ page {
   --switch-on-background-color: #A57865;
 }
 
+button[type=primary] {
+  background-color: #A57865;
+  color: #fff;
+}
+
 /* lib */
 .bold {
   font-weight: bold;

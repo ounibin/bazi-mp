@@ -7,3 +7,8 @@
 #mychart-dom-bar {
   z-index: 0;
 }
+
+
+.btn-analyse {
+  margin-top: 300px;
+}

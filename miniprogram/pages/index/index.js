@@ -43,22 +43,24 @@ Page({
    * 页面的初始数据
    */
   data: {
+    calendarTypeList: ['农历', '阳历'],
     calendarType: '农历',
-    showCalendarType: false,
-    calendarTypeActions: [{
-      name: '农历'
-    }, {
-      name: '阳历'
-    }],
-    showNongli: true,
-    minDate: new Date(1900, 1, 1).getTime(),
-    maxDate: new Date().getTime(),
-    currentDate: dayjs('1992-12-01 07:00').valueOf(),
-    baziStr: '',
-    showCalendar: false,
-    calendarMinDate: dayjs('1900-01-01 00:00').valueOf(),
-    calendarMaxDate: dayjs().valueOf(),
-    birthStr: '点击选择生日时辰',
+    selectedDate: '请选择日期',
+    chineseHours: [
+      '子时 (23:00-1:00)',
+      '丑时 (1:00-3:00)',
+      '寅时 (3:00-5:00)',
+      '卯时 (5:00-7:00)',
+      '辰时 (7:00-9:00)',
+      '巳时 (9:00-11:00)',
+      '午时 (11:00-13:00)',
+      '未时 (13:00-15:00)',
+      '申时 (15:00-17:00)',
+      '酉时 (17:00-19:00)',
+      '戌时 (19:00-21:00)',
+      '亥时 (21:00-23:00)'
+    ],
+    chineseHour: '请选择时辰',
     ec: {
       onInit: initChart
     }
@@ -77,9 +79,27 @@ Page({
     });
   },
 
-  onChangeCalendarType() {
+  onChangeCalendarType(e) {
+    const i = +e.detail.value
+    const type = this.data.calendarTypeList[i]
     this.setData({
-      showCalendarType: true
+      calendarType: type
+    })
+  },
+
+  onChangeBirth(e) {
+    const date = e.detail.value
+    this.setData({
+      selectedDate: date
+    })
+  },
+
+  onChangeChineseHours(e) {
+    const i = +e.detail.value
+    const hour = this.data.chineseHours[i]
+
+    this.setData({
+      chineseHour: hour
     })
   },
 
@@ -108,13 +128,6 @@ Page({
     })
   },
 
-  onShowCalendar() {
-    this.setData({
-      showCalendar: true
-
-    })
-
-  },
   onCloseCalendar() {
     this.setData({
       showCalendar: false
