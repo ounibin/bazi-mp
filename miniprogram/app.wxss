@@ -37,6 +37,14 @@ button[type=primary] {
   color: #fff;
 }
 
+button[type=primary]:active,
+button[type=primary]:visited,
+button[type=primary]:hover,
+button[type=primary]:focus {
+  background-color: #A57865;
+  opacity: 0.8;
+}
+
 /* lib */
 .bold {
   font-weight: bold;

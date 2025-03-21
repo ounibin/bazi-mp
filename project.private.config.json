@@ -8,9 +8,9 @@
     "miniprogram": {
       "list": [
         {
-          "name": "防具页",
-          "pathName": "page/armor/index",
-          "query": "",
+          "name": "pages/result-detial/index",
+          "pathName": "pages/result-detial/index",
+          "query": "calendarType=农历&selectedDate=1992-12-01&chineseHour=辰时 (7:00-9:00)",
           "launchMode": "default",
           "scene": null
         }
