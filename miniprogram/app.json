@@ -1,12 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/index/result",
     "pages/my/index",
-    "pages/result-detial/index"
+    "pages/login/index"
   ],
   "window": {
     "navigationBarTextStyle": "@navigationBarTextStyle",
-    "navigationBarTitleText": "演示",
+    "navigationBarTitleText": "五行命理",
     "navigationBarBackgroundColor": "@navigationBarBackgroundColor",
     "backgroundColor": "@backgroundColor"
   },
@@ -50,6 +51,7 @@
   "resizable": true,
   "useExtendedLib": {},
   "usingComponents": {
+    "van-checkbox": "@vant/weapp/checkbox/index",
     "van-image": "@vant/weapp/image/index",
     "van-switch": "@vant/weapp/switch/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",

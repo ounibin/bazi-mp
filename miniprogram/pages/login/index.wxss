@@ -1,0 +1,29 @@
+page {
+  background: rgb(236, 236, 236);
+}
+
+.box {
+  margin: 32rpx;
+  background: #fff;
+  border-radius: 24rpx;
+  padding-top: 64rpx;
+  padding-bottom: 64rpx;
+}
+
+.title {
+  padding: 88rpx 0 56rpx 0;
+  text-align: center;
+}
+
+.btn {
+  box-sizing: border-box;
+  margin: 32rpx 125rpx 0 125rpx;
+}
+
+.xieyi {
+  padding: 0 32rpx;
+  font-size: 24rpx;
+  color: #000;
+  display: flex;
+  align-items: center;
+}

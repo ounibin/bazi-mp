@@ -7,33 +7,24 @@ page {
   box-sizing: border-box;
   background-color: #F5F3F0;
   color: #333;
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 20px;
+  /* theme */
+  --main-color: #A57865;
+
 
   /* vant reset */
   --sidebar-selected-border-color: #3cc51f;
-
-  /* my-theme */
-  --green: #91F51D;
-  --pink: #FF00FF;
-  --orange: #FFB400;
-  --bgc: #150E07;
-  --black: #333;
-  --light-grey: #ebedf0;
-  --grey: #666;
-
-  /* vant ui */
-  /* 修改主要按钮的背景色 */
   --button-primary-background-color: #A57865;
   --button-primary-border-color: #A57865;
-  /* 修改选项卡激活状态文字颜色 */
   --tab-active-text-color: #A57865;
-  /* 修改开关开启状态的背景色 */
   --switch-on-background-color: #A57865;
 }
 
+
+
+/* weui reset */
 button[type=primary] {
-  background-color: #A57865;
+  background-color: var(--main-color);
   color: #fff;
 }
 
@@ -41,7 +32,7 @@ button[type=primary]:active,
 button[type=primary]:visited,
 button[type=primary]:hover,
 button[type=primary]:focus {
-  background-color: #A57865;
+  background-color: var(--main-color);
   opacity: 0.8;
 }
 

@@ -8,9 +8,16 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/result-detial/index",
-          "pathName": "pages/result-detial/index",
-          "query": "calendarType=农历&selectedDate=1992-12-01&chineseHour=辰时 (7:00-9:00)",
+          "name": "pages/my/index",
+          "pathName": "pages/my/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/login/index",
+          "pathName": "pages/login/index",
+          "query": "",
           "launchMode": "default",
           "scene": null
         }

@@ -30,7 +30,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {},
+  onLoad(options) { },
 
   onChangeCalendarType(e) {
     const i = +e.detail.value
@@ -79,14 +79,14 @@ Page({
       wx.navigateTo({
         url: `/pages/result-detial/index?calendarType=${calendarType}&selectedDate=${selectedDate}&chineseHour=${chineseHour}`
       })
-        
+
     }, 1000);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {},
+  onReady() { },
 
   /**
    * 生命周期函数--监听页面显示
