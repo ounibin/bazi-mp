@@ -29,7 +29,6 @@ button[type=primary] {
 }
 
 button[type=primary]:active,
-button[type=primary]:visited,
 button[type=primary]:hover,
 button[type=primary]:focus {
   background-color: var(--main-color);

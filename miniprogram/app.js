@@ -2,7 +2,7 @@ const config = require('./config')
 const themeListeners = []
 global.isDemo = true
 App({
-  
+
   onLaunch(opts, data) {
     // const that = this;
     // const canIUseSetBackgroundFetchToken = wx.canIUse('setBackgroundFetchToken')
@@ -31,6 +31,12 @@ App({
     //   })
     // }
     console.log('App Launch', opts)
+    // 设置分享菜单
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline']
+    })
+
     if (data && data.path) {
       wx.navigateTo({
         url: data.path,
@@ -46,7 +52,7 @@ App({
     }
   },
 
-  
+
   onShow(opts) {
     console.log('App Show', opts)
     // console.log(wx.getSystemInfoSync())
@@ -57,19 +63,19 @@ App({
   onThemeChange({ theme }) {
     this.globalData.theme = theme
     themeListeners.forEach((listener) => {
-        listener(theme)
+      listener(theme)
     })
   },
   watchThemeChange(listener) {
-      if (themeListeners.indexOf(listener) < 0) {
-          themeListeners.push(listener)
-      }
+    if (themeListeners.indexOf(listener) < 0) {
+      themeListeners.push(listener)
+    }
   },
   unWatchThemeChange(listener) {
-      const index = themeListeners.indexOf(listener)
-      if (index > -1) {
-          themeListeners.splice(index, 1)
-      }
+    const index = themeListeners.indexOf(listener)
+    if (index > -1) {
+      themeListeners.splice(index, 1)
+    }
   },
   globalData: {
     theme: wx.getSystemInfoSync().theme,

@@ -51,7 +51,7 @@ function getHour(chineseHour) {
     '酉时 (17:00-19:00)',
     '戌时 (19:00-21:00)',
     '亥时 (21:00-23:00)'
-  ].findIndex(item => item===chineseHour)
+  ].findIndex(item => item === chineseHour)
   return [
     '23:00',
     '1:00',
@@ -93,7 +93,7 @@ Page({
     const dayjs_instance = dayjs(birthStr)
     if (calendarType === '农历') {
       const year = dayjs_instance.year()
-      const month = dayjs_instance.month()+1
+      const month = dayjs_instance.month() + 1
       const day = dayjs_instance.date()
       const hour = dayjs_instance.hour()
       const minute = dayjs_instance.minute()
@@ -103,7 +103,7 @@ Page({
         day,
         isLeapMonth: false
       })
-      birth = lsr.format('YYYY-MM-DD')+ ' ' + time
+      birth = lsr.format('YYYY-MM-DD') + ' ' + time
       console.log(`异步打印----农历转阳历: `, birth)
     } else {
 
@@ -123,11 +123,11 @@ Page({
 
 
     const wuxingData = [
-      { value: wuXingDistribution['金'], itemStyle: { color: '#D89113' } },  
-      { value: wuXingDistribution['木'], itemStyle: { color: '#3FB043' } }, 
-      { value: wuXingDistribution['水'], itemStyle: { color: '#3A73F1' } }, 
-      { value: wuXingDistribution['火'], itemStyle: { color: '#C50201' } },  
-      { value: wuXingDistribution['土'], itemStyle: { color: '#8D7047' } }  
+      { value: wuXingDistribution['金'], itemStyle: { color: '#D89113' } },
+      { value: wuXingDistribution['木'], itemStyle: { color: '#3FB043' } },
+      { value: wuXingDistribution['水'], itemStyle: { color: '#3A73F1' } },
+      { value: wuXingDistribution['火'], itemStyle: { color: '#C50201' } },
+      { value: wuXingDistribution['土'], itemStyle: { color: '#8D7047' } }
     ].map((item) => {
       return {
         ...item,
@@ -146,13 +146,7 @@ Page({
           data: wuxingData
         }]
       })
-    }, 1500)
-  },
-
-
-
-  handleShare () {
-    console.log(`异步打印----fenxiang: `, )
+    }, 1000)
   },
 
   /**

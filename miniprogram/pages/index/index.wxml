@@ -19,3 +19,8 @@
 
 
 <button type="primary" size="large" bind:tap="queryBazi" class="btn-analyse">开始分析</button>
+
+
+<van-dialog id="van-dialog">
+  <button open-type="share" bind:tap="handleShare">分享</button>
+</van-dialog>

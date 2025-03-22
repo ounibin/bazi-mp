@@ -1,4 +1,4 @@
-import dayjs from 'dayjs'
+import Dialog from '@vant/weapp/dialog/dialog'
 
 
 Page({
@@ -71,13 +71,30 @@ Page({
     wx.showLoading({
       title: '查询中...',
     })
+    const leftTime = wx.getStorageSync('queryLeftTime')
     setTimeout(() => {
       wx.hideLoading()
 
+      // 扣掉一次查询次数
+      // console.log(`异步打印----typeof this.data.queryLeftTime: `, typeof this.data.queryLeftTime)
+      if (leftTime <= 0) {
+        Dialog.alert({
+          title: '可用次数不足',
+          message: '点击右上角"..."，分享给好友可获得更多查询次数',
+        })
+        return
+      }
+
+
+
+
+      // wx.setStorageSync('hasQueryList', data);
 
       const { calendarType, selectedDate, chineseHour } = this.data
       wx.navigateTo({
-        url: `/pages/result-detial/index?calendarType=${calendarType}&selectedDate=${selectedDate}&chineseHour=${chineseHour}`
+        url: `/pages/index/result?calendarType=${calendarType}&selectedDate=${selectedDate}&chineseHour=${chineseHour}`
+      }).then(res => {
+        wx.setStorageSync('queryLeftTime', leftTime - 1)
       })
 
     }, 1000);
@@ -127,6 +144,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
+    console.log(`异步打印----onShareAppMessage: `,)
+    const leftTime = wx.getStorageSync('queryLeftTime')
+    wx.setStorageSync('queryLeftTime', leftTime + 1)
+
     return {
       title: '查看你的八字五行',
       path: '/pages/index/index'
