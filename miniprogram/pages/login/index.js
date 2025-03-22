@@ -1,8 +1,8 @@
 // const WXAPI = require('apifm-wxapi')
-// const AUTH = require('../../utils/auth')
+const { local } = require('../../lib/wx-kit/index')
 Page({
   data: {
-    checked: false
+    checked: true
   },
   onLoad(options) {
   },
@@ -22,12 +22,12 @@ Page({
       duration: 1500,
       mask: false,
       success: (result) => {
-        
+
       },
-      fail: () => {},
-      complete: () => {}
+      fail: () => { },
+      complete: () => { }
     });
-      
+
     // wx.navigateTo({
     //   url: '/pages/about/index?key=' + e.currentTarget.dataset.key,
     // })
@@ -93,7 +93,7 @@ Page({
         content: '请阅读并同意隐私条款以后才能继续本操作',
         confirmText: '阅读协议',
         cancelText: '取消',
-        success (res) {
+        success(res) {
           if (res.confirm) {
             wx.requirePrivacyAuthorize() // 弹出用户隐私授权框
           }
@@ -122,9 +122,10 @@ Page({
   },
   async _getPhoneNumber(e) {
     console.log(`异步打印----获取手机号: `, e)
-    const { code } = await wx.login()
-    const { encryptedData, iv } = e
-    
+    // const { code } = await wx.login()
+    // console.log(`异步打印----code: `, code)
+    const { encryptedData, iv, code } = e.detail
+
     wx.cloud.callFunction({
       name: 'register',
       data: {
@@ -134,7 +135,12 @@ Page({
         iv
       }
     }).then(res => {
-      console.log('注册/登录成功', res)
+      const userInfo = res.result
+      console.log('注册/登录成功', userInfo)
+      const { _id, queryLeftTime } = userInfo
+      console.log(`异步打印----_id, queryLeftTime: `, _id, queryLeftTime)
+      wx.setStorageSync('userId', _id)
+      wx.setStorageSync('queryLeftTime', queryLeftTime)
       wx.reLaunch({
         url: '/pages/my/index',
       })

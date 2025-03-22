@@ -2,13 +2,14 @@
   <!-- 本次操作需要先登陆 -->
   <!-- <view class="title"></view> -->
   <view class="btn">
-    <van-button wx:if="{{ checked }}" block round open-type="getPhoneNumber" bind:getphonenumber="getPhoneNumber">
+    <van-button wx:if="{{ checked }}" type="primary" block round open-type="getPhoneNumber"
+      bind:getphonenumber="getPhoneNumber">
       手机号安全登录</van-button>
     <van-button wx:else block round bind:click="showModal2">手机号安全登录</van-button>
   </view>
-  <view class="btn">
+  <!-- <view class="btn">
     <van-button type="primary" block round bind:click="loginOne">一键登录</van-button>
-  </view>
+  </view> -->
 </view>
 <view class="xieyi">
   <van-checkbox value="{{ checked }}" bind:change="xieyiChange">阅读并同意</van-checkbox>
