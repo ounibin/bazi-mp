@@ -7,15 +7,17 @@ Page({
     queryLeftTime: 0
   },
   onLoad() {
+    console.log(`异步打印----page my onLoad: `,)
+
+  },
+  onShow() {
+    console.log(`异步打印----page my onShow: `,)
     const userId = wx.getStorageSync('userId')
     const queryLeftTime = wx.getStorageSync('queryLeftTime')
     this.setData({
       userId,
       queryLeftTime
     })
-
-  },
-  onShow() {
     // 检查登录状态
     // AUTH.checkHasLogined().then(isLogined => {
     //   if (isLogined) {
