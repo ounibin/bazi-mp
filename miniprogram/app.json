@@ -6,16 +6,15 @@
     "pages/login/index"
   ],
   "window": {
-    "navigationBarTextStyle": "@navigationBarTextStyle",
-    "navigationBarTitleText": "五行命理",
-    "navigationBarBackgroundColor": "@navigationBarBackgroundColor",
-    "backgroundColor": "@backgroundColor"
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "五行巧命",
+    "backgroundColor": "#FFFFFF"
   },
   "tabBar": {
-    "color": "@tabBarColor",
-    "selectedColor": "@tabBarSelectedColor",
-    "borderStyle": "@tabBarBorderStyle",
-    "backgroundColor": "",
+    "backgroundColor": "white",
+    "color": "#999",
+    "selectedColor": "#A57865",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -46,7 +45,6 @@
   },
   "cloud": true,
   "sitemapLocation": "sitemap.json",
-  "themeLocation": "app.theme.json",
   "darkmode": false,
   "resizable": true,
   "useExtendedLib": {},
