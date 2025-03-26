@@ -1,7 +1,9 @@
 const config = require('./config')
+const towxml = require('./towxml/index')
 const themeListeners = []
 global.isDemo = true
 App({
+  // towxml: towxml,
 
   onLaunch(opts, data) {
     // const that = this;

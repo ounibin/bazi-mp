@@ -9,7 +9,7 @@
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .card>.title {
@@ -34,8 +34,8 @@
 }
 
 .birth-info {
-  background-color: rgb(165 120 101 / 0.05);
-  text-align: right;
+  /* background-color: rgb(165 120 101 / 0.05); */
+  /* text-align: right; */
 }
 
 .birth-info>.birth-time {

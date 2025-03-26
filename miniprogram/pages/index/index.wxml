@@ -2,32 +2,32 @@
 
 
 <view wx:if="{{selectedDate&&chineseHour}}">
+  <view class="section bg-white rounded-lg p-4 ">
+    <!-- <view class="h2">您的生辰</view> -->
+    <view class="rounded-lg birth-info">
+      <view class="bold birth-date">
+        农历 1992-02-12
+      </view>
+      <view class="birth-time">
+        {{ chineseHour }}
+      </view>
+    </view>
 
+  </view>
 
   <view class="card">
     <view class="title">
-      <view class="h1">八字分析</view>
+      <view class="h1">五行分析</view>
       <view class="desc">探索您的五行密码</view>
 
     </view>
     <view class="content">
 
-      <view class="section">
-        <view class="h2">生辰</view>
-        <view class="p-4 rounded-lg birth-info">
-          <view class="bold birth-date">
-            农历 1992-02-12
-          </view>
-          <view class="birth-time">
-            {{ chineseHour }}
-          </view>
-        </view>
 
-      </view>
 
       <!-- 五行分布section -->
       <view class="section">
-        <view class="h2">五行分布</view>
+        <!-- <view class="h2">五行分布</view> -->
         <!-- 展示生日五行属性 -->
         <view class="container-ec">
           <ec-canvas canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
@@ -39,6 +39,15 @@
         </van-cell-group>
 
       </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="title">
+      <view class="h1">每日运势</view>
+    </view>
+    <view class="content">
+      <towxml nodes="{{markdownContent}}" />
     </view>
   </view>
 
