@@ -4,7 +4,7 @@
 Page({
   data: {
     userId: '',
-    queryLeftTime: 0
+    queryLeftTime: '无限'
   },
   onLoad() {
     console.log(`异步打印----page my onLoad: `,)
@@ -16,7 +16,7 @@ Page({
     const queryLeftTime = wx.getStorageSync('queryLeftTime')
     this.setData({
       userId,
-      queryLeftTime
+      // queryLeftTime
     })
     // 检查登录状态
     // AUTH.checkHasLogined().then(isLogined => {

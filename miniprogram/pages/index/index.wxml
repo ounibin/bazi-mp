@@ -1,26 +1,50 @@
-<van-cell-group>
-  <picker bindchange="onChangeCalendarType" value="{{index}}" range="{{calendarTypeList}}">
-    <van-cell title="日历类型" is-link value="{{calendarType}}" />
-  </picker>
+<!--pages/index/index.wxml-->
 
 
+<view wx:if="{{selectedDate&&chineseHour}}">
 
 
-  <picker mode="date" start="1900-01-01" bindchange="onChangeBirth" value="{{selectedDate}}"
-    range="{{calendarTypeList}}">
-    <van-cell title="出生日期" is-link value="{{ selectedDate }}" />
-  </picker>
+  <view class="card">
+    <view class="title">
+      <view class="h1">八字分析</view>
+      <view class="desc">探索您的五行密码</view>
+
+    </view>
+    <view class="content">
+
+      <view class="section">
+        <view class="h2">生辰</view>
+        <view class="p-4 rounded-lg birth-info">
+          <view class="bold birth-date">
+            农历 1992-02-12
+          </view>
+          <view class="birth-time">
+            {{ chineseHour }}
+          </view>
+        </view>
+
+      </view>
+
+      <!-- 五行分布section -->
+      <view class="section">
+        <view class="h2">五行分布</view>
+        <!-- 展示生日五行属性 -->
+        <view class="container-ec">
+          <ec-canvas canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+        </view>
+
+        <!-- 五行属性欠缺 -->
+        <van-cell-group>
+          <van-cell title="五行欠缺" value="{{ missingWuXingStr }}" />
+        </van-cell-group>
+
+      </view>
+    </view>
+  </view>
 
 
-  <picker bindchange="onChangeChineseHours" value="{{index}}" range="{{chineseHours}}">
-    <van-cell title="出生时辰" is-link value="{{ chineseHour }}" />
-  </picker>
-</van-cell-group>
+  <!-- 重新选择生日和时辰 -->
+  <button type="primary" bind:tap="goEditBirth">修改生日</button>
+</view>
 
-
-<button type="primary" size="large" bind:tap="queryBazi" class="btn-analyse">开始分析</button>
-
-
-<van-dialog id="van-dialog">
-  <button open-type="share" bind:tap="handleShare">分享</button>
-</van-dialog>
+<button wx:else type="primary" bind:tap="goEditBirth">添加生日查看五行属性</button>

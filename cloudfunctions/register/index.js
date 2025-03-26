@@ -1,8 +1,8 @@
 // 云函数入口
 const cloud = require('wx-server-sdk')
-const CONFIG = require('../config')
+
 cloud.init({
-  env: CONFIG.envId
+  env: 'cloud1-4g5wjkcy3acbac12'
 })
 
 exports.main = async (event, context) => {
@@ -42,7 +42,7 @@ exports.main = async (event, context) => {
           openId: wxContext.OPENID,
           phone: phoneNumber,
           createdAt: db.serverDate(),
-          queryLeftTime: 1
+          queryLeftTime: 0
         }
       })
     } else {

@@ -1,5 +1,44 @@
-/* page/index/index.wxss */
+.container-ec {
+  height: 400rpx;
+}
 
-.btn-analyse {
-  margin-top: 300px;
+
+.card {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  margin-bottom: 10px;
+}
+
+.card>.title {
+  font-size: 32rpx;
+  background-color: var(--main-color);
+  color: #fff;
+  padding: 1.5rem;
+}
+
+.desc {
+  margin-top: 0.5rem;
+}
+
+.card>.content {
+  padding: 1.5rem;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.section {
+  margin-bottom: 1.5rem;
+}
+
+.birth-info {
+  background-color: rgb(165 120 101 / 0.05);
+  text-align: right;
+}
+
+.birth-info>.birth-time {
+  color: #666;
+  font-size: 0.875rem;
 }

@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/index/result",
     "pages/my/index",
+    "pages/editBirth/index",
     "pages/login/index"
   ],
   "window": {

@@ -1,6 +1,6 @@
 <view wx:if="{{ !userId }}" class="header-box">
   <view class="login-btn">
-    <van-button type="warning" block round bind:click="login">立即登陆</van-button>
+    <button type="primary" bind:tap="login">立即登陆</button>
   </view>
 </view>
 <view wx:else class="header-box">

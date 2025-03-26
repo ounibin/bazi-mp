@@ -1,5 +1,73 @@
-import Dialog from '@vant/weapp/dialog/dialog'
+// pages/index/index.js
+import dayjs from 'dayjs'
+import lunisolar from 'lunisolar'
+import {
+  analyzeWuXing
+} from '../../lib/suanming/index'
+import * as echarts from '../../ec-canvas/echarts'
 
+
+let chart = null
+
+function initChart(canvas, width, height, dpr) {
+  chart = echarts.init(canvas, null, {
+    width: width,
+    height: height,
+    devicePixelRatio: dpr // new
+  })
+  canvas.setChart(chart)
+
+  const option = {
+    xAxis: {
+      type: 'category',
+      data: ['金', '木', '水', '火', '土']
+    },
+    yAxis: {
+      type: 'value',
+      show: false
+    },
+    series: [{
+      data: [0, 0, 0, 0, 0],
+      type: 'bar'
+    }]
+  }
+
+
+  chart.setOption(option)
+  return chart
+}
+
+
+function getHour(chineseHour) {
+  const i = [
+    '子时 (23:00-1:00)',
+    '丑时 (1:00-3:00)',
+    '寅时 (3:00-5:00)',
+    '卯时 (5:00-7:00)',
+    '辰时 (7:00-9:00)',
+    '巳时 (9:00-11:00)',
+    '午时 (11:00-13:00)',
+    '未时 (13:00-15:00)',
+    '申时 (15:00-17:00)',
+    '酉时 (17:00-19:00)',
+    '戌时 (19:00-21:00)',
+    '亥时 (21:00-23:00)'
+  ].findIndex(item => item === chineseHour)
+  return [
+    '23:00',
+    '1:00',
+    '3:00',
+    '5:00',
+    '7:00',
+    '9:00',
+    '11:00',
+    '13:00',
+    '15:00',
+    '17:00',
+    '19:00',
+    '21:00',
+  ][i]
+}
 
 Page({
 
@@ -7,108 +75,110 @@ Page({
    * 页面的初始数据
    */
   data: {
-    calendarTypeList: ['农历', '阳历'],
     calendarType: '农历',
-    selectedDate: '1992-12-01',
-    chineseHours: [
-      '子时 (23:00-1:00)',
-      '丑时 (1:00-3:00)',
-      '寅时 (3:00-5:00)',
-      '卯时 (5:00-7:00)',
-      '辰时 (7:00-9:00)',
-      '巳时 (9:00-11:00)',
-      '午时 (11:00-13:00)',
-      '未时 (13:00-15:00)',
-      '申时 (15:00-17:00)',
-      '酉时 (17:00-19:00)',
-      '戌时 (19:00-21:00)',
-      '亥时 (21:00-23:00)'
-    ],
-    chineseHour: '辰时 (7:00-9:00)'
+    selectedDate: '',
+    chineseHour: '',
+    baziStr: '',
+    missingWuXingStr: '',
+    ec: {
+      onInit: initChart
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) { },
-
-  onChangeCalendarType(e) {
-    const i = +e.detail.value
-    const type = this.data.calendarTypeList[i]
-    this.setData({
-      calendarType: type
-    })
+  onLoad(options) {
   },
 
-  onChangeBirth(e) {
-    const date = e.detail.value
-    this.setData({
-      selectedDate: date
+  goEditBirth() {
+    wx.navigateTo({
+      url: '/pages/editBirth/index'
     })
-  },
-
-  onChangeChineseHours(e) {
-    const i = +e.detail.value
-    const hour = this.data.chineseHours[i]
-
-    this.setData({
-      chineseHour: hour
-    })
-  },
-
-  queryBazi() {
-
-
-    if (!(/^\d/.test(this.data.selectedDate))) {
-      wx.showToast({
-        title: '请输入生日时辰',
-        icon: 'error',
-        duration: 2000
-      })
-      return
-    }
-
-    wx.showLoading({
-      title: '查询中...',
-    })
-    const leftTime = wx.getStorageSync('queryLeftTime')
-    setTimeout(() => {
-      wx.hideLoading()
-
-      // 扣掉一次查询次数
-      // console.log(`异步打印----typeof this.data.queryLeftTime: `, typeof this.data.queryLeftTime)
-      if (leftTime <= 0) {
-        Dialog.alert({
-          title: '可用次数不足',
-          message: '点击右上角"..."，分享给好友可获得更多查询次数',
-        })
-        return
-      }
-
-
-
-
-      // wx.setStorageSync('hasQueryList', data);
-
-      const { calendarType, selectedDate, chineseHour } = this.data
-      wx.navigateTo({
-        url: `/pages/index/result?calendarType=${calendarType}&selectedDate=${selectedDate}&chineseHour=${chineseHour}`
-      }).then(res => {
-        wx.setStorageSync('queryLeftTime', leftTime - 1)
-      })
-
-    }, 1000);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() { },
+  onReady() {
+
+  },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    const calendarType = wx.getStorageSync('calendarType')
+    const selectedDate = wx.getStorageSync('selectedDate')
+    const chineseHour = wx.getStorageSync('chineseHour')
+    this.setData({
+      calendarType,
+      selectedDate,
+      chineseHour
+    })
+
+
+
+    const time = getHour(chineseHour)
+    const birthStr = selectedDate + ' ' + time
+    const dayjs_instance = dayjs(birthStr)
+    let birth = ''
+    if (calendarType === '农历') {
+      const year = dayjs_instance.year()
+      const month = dayjs_instance.month() + 1
+      const day = dayjs_instance.date()
+      const hour = dayjs_instance.hour()
+      const minute = dayjs_instance.minute()
+      const lsr = lunisolar.fromLunar({
+        year,
+        month,
+        day,
+        isLeapMonth: false
+      })
+      birth = lsr.format('YYYY-MM-DD') + ' ' + time
+      console.log(`异步打印----农历转阳历: `, birth)
+    } else {
+
+      birth = birthStr
+    }
+    console.log(`异步打印----要分析的阳历: `, birth)
+    const res = analyzeWuXing(birth)
+    console.log(`异步打印----分析结果: `, res)
+    const { pillars, wuXingDistribution, missingWuXing } = res
+    const baziStr = pillars.join(' ')
+    const missingWuXingStr = missingWuXing.length === 0 ? '无' : missingWuXing.join('、')
+
+    this.setData({
+      baziStr,
+      missingWuXingStr
+    })
+
+
+    const wuxingData = [
+      { value: wuXingDistribution['金'], itemStyle: { color: '#D89113' } },
+      { value: wuXingDistribution['木'], itemStyle: { color: '#3FB043' } },
+      { value: wuXingDistribution['水'], itemStyle: { color: '#3A73F1' } },
+      { value: wuXingDistribution['火'], itemStyle: { color: '#C50201' } },
+      { value: wuXingDistribution['土'], itemStyle: { color: '#8D7047' } }
+    ].map((item) => {
+      return {
+        ...item,
+        label: {
+          show: true,
+          position: 'top',
+          color: '#666',
+          fontSize: 14,
+          formatter: '{c}' // 显示 "数值 + 件"
+        }
+      }
+    })
+    setTimeout(() => {
+      chart.setOption({
+        series: [{
+          data: wuxingData
+        }]
+      })
+    }, 1000)
 
   },
 
@@ -144,13 +214,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
-    console.log(`异步打印----onShareAppMessage: `,)
-    const leftTime = wx.getStorageSync('queryLeftTime')
-    wx.setStorageSync('queryLeftTime', leftTime + 1)
 
-    return {
-      title: '查看你的八字五行',
-      path: '/pages/index/index'
-    }
   }
 })

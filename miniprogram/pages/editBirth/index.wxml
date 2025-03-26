@@ -1,0 +1,26 @@
+<van-cell-group>
+  <picker bindchange="onChangeCalendarType" value="{{index}}" range="{{calendarTypeList}}">
+    <van-cell title="日历类型" is-link value="{{calendarType}}" />
+  </picker>
+
+
+
+
+  <picker mode="date" start="1900-01-01" bindchange="onChangeBirth" value="{{selectedDate}}"
+    range="{{calendarTypeList}}">
+    <van-cell title="出生日期" is-link value="{{ selectedDate }}" />
+  </picker>
+
+
+  <picker bindchange="onChangeChineseHours" value="{{index}}" range="{{chineseHours}}">
+    <van-cell title="出生时辰" is-link value="{{ chineseHour }}" />
+  </picker>
+</van-cell-group>
+
+
+<button type="primary" size="large" bind:tap="queryBazi" class="btn-analyse">保存</button>
+
+
+<van-dialog id="van-dialog">
+  <button open-type="share" bind:tap="handleShare">分享</button>
+</van-dialog>
