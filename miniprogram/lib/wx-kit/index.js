@@ -1,3 +1,5 @@
+export * from './request'
+
 export const local = {
   set: (key, value) => {
     value = typeof value === 'string' ? value : JSON.stringify(value)
