@@ -8,7 +8,7 @@ module.exports = {
   host: '14592619.qcloud.la',
 
   // 云开发环境 ID
-  envId: 'cloud1-4g5wjkcy3acbac12',
+  envId: 'qiaoming-test-1giy67ge13d6a4e1',
 
   // 云开发-存储 示例文件的文件 ID
   demoImageFileId: 'cloud://release-b86096.7265-release-b86096-1258211818/demo.jpg',

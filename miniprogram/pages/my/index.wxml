@@ -1,6 +1,9 @@
 <view wx:if="{{ !userId }}" class="header-box">
   <view class="login-btn">
     <button type="primary" bind:tap="login">立即登陆</button>
+
+
+    <button bind:tap="loginByPhone">手机号登录</button>
   </view>
 </view>
 <view wx:else class="header-box">

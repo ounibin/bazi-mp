@@ -13,29 +13,36 @@ Page({
   onShow() {
     console.log(`异步打印----page my onShow: `,)
     const userId = wx.getStorageSync('userId')
-    const queryLeftTime = wx.getStorageSync('queryLeftTime')
     this.setData({
       userId,
-      // queryLeftTime
     })
-    // 检查登录状态
-    // AUTH.checkHasLogined().then(isLogined => {
-    //   if (isLogined) {
-    //     this.getUserApiInfo();
-    //     this.getUserAmount();
-    //     this.orderStatistics();
-    //     this.cardMyList();
-    //     TOOLS.showTabBarBadge();
-    //   } else {
-    //     getApp().loginOK = () => {
-    //       this.getUserApiInfo();
-    //       this.getUserAmount();
-    //       this.orderStatistics();
-    //       this.cardMyList();
-    //       TOOLS.showTabBarBadge();
-    //     }
-    //   }
-    // })
+  },
+
+  async loginByPhone() {
+
+    const phoneNumber = '13800138000'
+    const verificationCode = '1'
+    try {
+      // 调用云函数
+      const res = await wx.cloud.callFunction({
+        name: 'users',
+        data: {
+          action: 'register',
+          data: {
+            phone: phoneNumber,
+            verificationCode: verificationCode,
+          }
+        }
+      })
+      console.log(`异步打印----res: `, res)
+      // if (res.result.code === 200) {
+      //   alert('注册成功！')
+      // } else {
+      //   alert(res.result.message)
+      // }
+    } catch (error) {
+      console.error('注册失败:', error)
+    }
   },
   async getUserApiInfo() {
     // const res = await WXAPI.userDetail(wx.getStorageSync('token'))
