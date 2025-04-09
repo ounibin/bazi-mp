@@ -15,6 +15,10 @@
 
   </view>
 
+
+  <!-- 重新选择生日和时辰 -->
+  <button type="primary" bind:tap="goEditBirth">修改生日</button>
+
   <view class="card">
     <view class="title">
       <view class="h1">五行分析</view>
@@ -42,18 +46,14 @@
     </view>
   </view>
 
-  <view class="card">
+  <!-- <view class="card">
     <view class="title">
       <view class="h1">每日运势</view>
     </view>
     <view class="content">
       <towxml nodes="{{markdownContent}}" />
     </view>
-  </view>
-
-
-  <!-- 重新选择生日和时辰 -->
-  <button type="primary" bind:tap="goEditBirth">修改生日</button>
+  </view> -->
 </view>
 
 <button wx:else type="primary" bind:tap="goEditBirth">添加生日查看五行属性</button>

@@ -1,10 +1,10 @@
 import dayjs from 'dayjs'
 import lunisolar from 'lunisolar'
-import towxml from '../../towxml/index'
+import towxml from '../../lib/towxml/index'
 import {
   analyzeWuXing
 } from '../../lib/suanming/index'
-import * as echarts from '../../ec-canvas/echarts'
+import * as echarts from '../../lib/ec-canvas/echarts'
 
 
 // const towxml = new Towxml('markdown');

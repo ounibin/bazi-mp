@@ -16,6 +16,15 @@ Page({
     this.setData({
       userId,
     })
+    if (!userId) {
+      this.goLogin()
+    }
+  },
+
+  goLogin() {
+    wx.navigateTo({
+      url: '/pages/login/index',
+    })
   },
 
   async loginByPhone() {
