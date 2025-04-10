@@ -24,6 +24,8 @@
     "eslint-plugin-promise": "^4.0.0"
   },
   "dependencies": {
+    "crypto-js": "^4.2.0",
+    "dayjs": "^1.11.13",
     "miniprogram-barrage": "^1.1.0",
     "miniprogram-recycle-view": "^0.1.5",
     "wx-server-sdk": "^3.0.1"

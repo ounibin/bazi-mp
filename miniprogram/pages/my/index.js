@@ -16,9 +16,6 @@ Page({
     this.setData({
       userId,
     })
-    if (!userId) {
-      this.goLogin()
-    }
   },
 
   goLogin() {
