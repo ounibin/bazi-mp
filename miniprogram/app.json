@@ -3,12 +3,13 @@
     "pages/index/index",
     "pages/my/index",
     "pages/editBirth/index",
-    "pages/login/index"
+    "pages/login/index",
+    "pages/dress/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "五行巧命",
+    "navigationBarTitleText": "裳易AI",
     "backgroundColor": "#FFFFFF"
   },
   "tabBar": {
@@ -21,6 +22,12 @@
         "iconPath": "img/icon-bazi.png",
         "selectedIconPath": "img/icon-bazi-active.png",
         "text": "首页"
+      },
+      {
+        "pagePath": "pages/dress/index",
+        "iconPath": "img/icon-dress.png",
+        "selectedIconPath": "img/icon-dress-active.png",
+        "text": "穿搭"
       },
       {
         "pagePath": "pages/my/index",

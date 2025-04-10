@@ -178,11 +178,11 @@ Page({
       return {
         ...item,
         label: {
-          show: true,
+          show: false,
           position: 'top',
           color: '#666',
           fontSize: 14,
-          formatter: '{c}' // 显示 "数值 + 件"
+          // formatter: '{c}' // 显示 "数值 + 件"
         }
       }
     })

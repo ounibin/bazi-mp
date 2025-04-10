@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/dress/index",
+          "pathName": "pages/dress/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/my/index",
           "pathName": "pages/my/index",
           "query": "",

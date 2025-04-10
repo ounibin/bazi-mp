@@ -1,0 +1,28 @@
+<view class="">
+  <text class="">您的五行属性缺火</text>
+</view>
+
+<view class="">
+  <text class="">建议：</text>
+</view>
+<view class="">
+  <text class="">可以佩戴木质的佛珠或手链来补木；佩戴红色的石榴石、红珊瑚等饰品来补火。</text>
+</view>
+
+<swiper class="swiper-container" indicator-dots="{{true}}" autoplay="{{false}}" interval="5000" circular
+  bindchange="swiperChange">
+  <block wx:for="{{dressList}}" wx:key="index">
+    <swiper-item>
+      <view class="card-container">
+        <image class="dress-image" src="{{item.imageUrl}}" mode="aspectFill" />
+        <view class="description-box">
+          <text class="description-text">{{item.desc}}</text>
+        </view>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="pagination">
+  {{currentIndex + 1}}/{{dressList.length}}
+</view>

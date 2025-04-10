@@ -2,8 +2,8 @@
 
 
 <view wx:if="{{selectedDate&&chineseHour}}">
-  <view class="section bg-white rounded-lg p-4 ">
-    <!-- <view class="h2">您的生辰</view> -->
+  <!-- <view class="section bg-white rounded-lg p-4 ">
+    <view class="h2">您的生辰</view>
     <view class="rounded-lg birth-info">
       <view class="bold birth-date">
         农历 1992-02-12
@@ -14,14 +14,14 @@
     </view>
 
   </view>
-
+ -->
 
   <!-- 重新选择生日和时辰 -->
-  <button type="primary" bind:tap="goEditBirth">修改生日</button>
+  <!-- <button type="primary" bind:tap="goEditBirth">修改生日</button> -->
 
   <view class="card">
     <view class="title">
-      <view class="h1">五行分析</view>
+      <view class="h1">五行能量图</view>
       <view class="desc">探索您的五行密码</view>
 
     </view>
@@ -57,3 +57,4 @@
 </view>
 
 <button wx:else type="primary" bind:tap="goEditBirth">添加生日查看五行属性</button>
+
