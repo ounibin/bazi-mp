@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/editBirth/index",
+          "pathName": "pages/editBirth/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/dress/index",
           "pathName": "pages/dress/index",
           "query": "",

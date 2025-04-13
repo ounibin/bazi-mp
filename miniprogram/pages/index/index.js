@@ -186,13 +186,17 @@ Page({
         }
       }
     })
-    setTimeout(() => {
-      chart.setOption({
-        series: [{
-          data: wuxingData
-        }]
-      })
-    }, 1000)
+
+    if (selectedDate) {
+      setTimeout(() => {
+        chart.setOption({
+          series: [{
+            data: wuxingData
+          }]
+        })
+      }, 1000)
+
+    }
 
   },
 

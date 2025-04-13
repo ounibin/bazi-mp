@@ -56,5 +56,26 @@
   </view> -->
 </view>
 
-<button wx:else type="primary" bind:tap="goEditBirth">添加生日查看五行属性</button>
 
+<view wx:else>
+  <view class="relative flex size-full min-h-screen flex-col bg-[#f6f4f3] group/design-root overflow-x-hidden"
+    style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+    <view class="flex flex-col px-4 py-6">
+      <view class="flex flex-col items-center gap-6">
+        <!-- <view class="bg-center bg-no-repeat aspect-video bg-cover rounded-xl w-full max-w-[360px]"
+          style='background-image: url("https://cdn.usegalileo.ai/sdxl10/ceae4e3d-7ee4-4b6e-9a46-160a062dedc5.png");'>
+        </view> -->
+        <image class="" src="https://cdn.usegalileo.ai/sdxl10/ceae4e3d-7ee4-4b6e-9a46-160a062dedc5.png" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+          
+        <view class="flex max-w-[480px] flex-col items-center gap-2">
+          <p class="text-[#181311] text-lg font-bold leading-tight tracking-[-0.015em] max-w-[480px] text-center">请填写生日
+          </p>
+          <p class="text-[#181311] text-sm font-normal leading-normal max-w-[480px] text-center">填写生日以探索您的五行能量图</p>
+        </view>
+
+
+        <button type="primary" bind:tap="goEditBirth">填写生日</button>
+      </view>
+    </view>
+  </view>
+</view>
