@@ -1,13 +1,9 @@
 import dayjs from 'dayjs'
 import lunisolar from 'lunisolar'
-import towxml from '../../lib/towxml/index'
 import {
   analyzeWuXing
 } from '../../lib/suanming/index'
 import * as echarts from '../../lib/ec-canvas/echarts'
-
-
-// const towxml = new Towxml('markdown');
 
 let chart = null
 
@@ -95,13 +91,8 @@ Page({
     // 假设你从服务器获取到的 Markdown 文本
     const markdownText = `# 标题\n\n这是 **加粗** 的文本。\n\n- 列表项1\n- 列表项2`;
 
-    // 解析 Markdown 文本
-    // const parsedContent = towxml.toJson(markdownText, 'markdown');
-    const parsedContent = towxml(markdownText, 'markdown');
-
     // 将解析后的内容设置到页面数据中
     this.setData({
-      markdownContent: parsedContent
     });
   },
 
